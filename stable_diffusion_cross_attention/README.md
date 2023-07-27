@@ -6,7 +6,7 @@ We use the code for [prompt-to-prompt](https://prompt-to-prompt.github.io/) to a
 The way to visualize cross-attention between word tokens and image feature map is shown as follows
 
 
-<img src="attention_vis_process.jpeg" alt="drawing" style="width:400px;"/>
+<img src="attention_vis_process.jpeg" alt="drawing" style="width:800px;"/>
 
 Visualization exampels:
 ![attenion vis example1](attention_vis_example1.jpg)
