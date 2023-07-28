@@ -301,3 +301,72 @@ prompts = ["A painting of a squirrel eating a burger",
 
 controller = AttentionReplace(prompts, NUM_DIFFUSION_STEPS, cross_replace_steps=.8, self_replace_steps=0.4)
 _ = run_and_display(prompts, controller, latent=x_t, run_baseline=True)
+
+
+# replacement control + local edit
+
+prompts = ["A painting of a squirrel eating a burger",
+           "A painting of a lion eating a burger"]
+lb = LocalBlend(prompts, ("squirrel", "lion"))
+controller = AttentionReplace(prompts, NUM_DIFFUSION_STEPS,
+                              cross_replace_steps={"default_": 1., "lion": .4},
+                              self_replace_steps=0.4, local_blend=lb)
+_ = run_and_display(prompts, controller, latent=x_t, run_baseline=False)
+
+
+
+#refinement control
+prompts = ["a photo of a house on a mountain",
+           "a photo of a house on a mountain at winter"]
+
+
+controller = AttentionRefine(prompts, NUM_DIFFUSION_STEPS, cross_replace_steps=.8,
+                             self_replace_steps=.4)
+_ = run_and_display(prompts, controller, latent=x_t)
+
+
+
+prompts = ["a photo of a dog having a drink",
+           "a photo of a dog having a red drink"]
+
+controller = AttentionRefine(prompts, NUM_DIFFUSION_STEPS,
+                             cross_replace_steps=.5, 
+                             self_replace_steps=.2,
+                            local_blend=None)
+
+_ = run_and_display(prompts, controller, latent=x_t)
+
+
+prompts = ["a photo of a butterfly",
+           "a photo of a butterfly beside a building"]
+
+controller = AttentionRefine(prompts, NUM_DIFFUSION_STEPS,
+                             cross_replace_steps=.5, 
+                             self_replace_steps=.2,
+                            local_blend=None)
+
+_ = run_and_display(prompts, controller, latent=x_t)
+
+
+#Attention Re-Weighting
+
+prompts = ["a smiling bunny doll"] * 2
+
+equalizer = get_equalizer(prompts[1], ("smiling",), (5,))
+controller = AttentionReweight(prompts, NUM_DIFFUSION_STEPS, cross_replace_steps=.8,
+                               self_replace_steps=.4,
+                               equalizer=equalizer)
+_ = run_and_display(prompts, controller, latent=x_t, run_baseline=False)
+
+
+prompts = ["a smiling bunny doll"] * 2
+
+### pay 3 times more attention to the word "smiling"
+equalizer = get_equalizer(prompts[1], ("smiling",), (5,))
+lb = LocalBlend(prompts, ("doll", "doll"))
+controller = AttentionReweight(prompts, NUM_DIFFUSION_STEPS, cross_replace_steps=.8,
+                               self_replace_steps=.4,
+                               equalizer=equalizer,
+                              local_blend =lb)
+_ = run_and_display(prompts, controller, latent=x_t, run_baseline=False)
+
