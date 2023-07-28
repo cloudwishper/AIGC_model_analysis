@@ -1,4 +1,4 @@
-# AIGC_model_analysis
+# AIGC model analysis
 
 
 In order to better understand different AIGC related models like stable diffusion, we use this repo to analyze them.
@@ -10,7 +10,7 @@ In order to better understand different AIGC related models like stable diffusio
     Prompt-to-prompt ICLR 2023 is a good paper to help us understand how the word token control the internal attention map and then it controls the generated images.
 
 
-# Reading papers
+# Paper reading
 
 | paper  | resource |
 | ------------- | ------------- |
