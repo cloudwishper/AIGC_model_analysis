@@ -288,6 +288,7 @@ def run_and_display(prompts, controller, latent=None, run_baseline=False, genera
 
 
 ## Cross-Attention Visualization
+## don't forget check and uncomment the code in fuction register_attention_control in ptp_utils.py
 g_cpu = torch.Generator().manual_seed(8888)
 prompts = ["grass dog"] #A painting of a squirrel eating a burger
 controller = AttentionStore()
