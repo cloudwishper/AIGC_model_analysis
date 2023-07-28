@@ -26,7 +26,7 @@ My own ayalysis: the early steps in the decoding process control the global stru
 
 # cross attention edit for control
 
-### replacement edit
+### 1. replacement edit
 In order to only change the replaced word region, prompt-to-prompt propsed to use the original attention map to swap with the new attention map (following figure). For previous example, the region attend to "squirrel" will attend to 'lion', and the location of the region keep changed. Thats why it can do local replacement edit.
 
 <img src="word_swap.jpg" alt="drawing" style="width:200px;"/>
@@ -34,3 +34,22 @@ In order to only change the replaced word region, prompt-to-prompt propsed to us
 The replacement edit results:
 
 <img src="replace_edit1.jpg" alt="drawing" style="width:400px;"/>
+
+**One issue**: look at burgers, they are also changed when we only want to change squirrel to lion. We use the original attention map for cross attention and only the 'squirrel' region should changed to 'lion'. But we have other operations, like the convlution (also self attention), conv has gredually increasing receptive field. Even we only changed the 'squirrel' region for the feature after cross atteion, it also has small affects for other regions due to large receptive field of following convlution and self-attention operations. 
+
+There is one smart and easy soluiton was proposed in prompt-to-prompt (Algorithm 1 L11-14). Using the attention map as mask, and then use the origianl feature map values for the regions that we don't want to edit (like burgers). The updated result is showed as follows. Since the mask  used is not 100% accurate, burgers are not 100% unchanged. But much better than before.
+
+<img src="replace_edit2.jpg" alt="drawing" style="width:400px;"/>
+
+
+The edit operations can be applied to from 0% layers and 100% layers. The following image is from the original paper:
+
+
+<img src="replace_edit3.jpg" alt="drawing" style="width:400px;"/>
+
+
+
+
+### 1. Refinement edit
+
+
