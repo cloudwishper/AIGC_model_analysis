@@ -9,7 +9,11 @@ In order to better understand different AIGC related models like stable diffusio
 
     Prompt-to-prompt ICLR 2023 is a good paper to help us understand how the word token control the internal attention map and then it controls the generated images.
 
-| First Header  | Second Header |
+
+# Reading papers
+
+| paper  | resource |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| High-Resolution Image Synthesis with Latent Diffusion Models (stable diffusion)  | CVPR 2022  |
+| DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation | CVPR 2023 |
+|Prompt-to-Prompt Image Editing with Cross-Attention Control |ICLR 2023 |
