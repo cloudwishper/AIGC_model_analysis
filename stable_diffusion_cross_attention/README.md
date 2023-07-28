@@ -14,7 +14,7 @@ Visualization exampels:
 <img src="pictures/attention_vis_example2.jpg" alt="drawing" style="width:800px;"/>
 
 
-# no local control for vanilla stable diffusion
+# no control for vanilla stable diffusion
 
 We repalce 'squirrel' with 'lion' in the input prompot, there is no local control on the generated images even with same random seed. A small modification of the text prompt often leads to a completely different outcome.
 
@@ -27,7 +27,7 @@ My own ayalysis: the early steps in the decoding process control the global stru
 # cross attention edit for control
 
 ### 1. replacement edit
-In order to only change the replaced word region, prompt-to-prompt propsed to use the original attention map to swap with the new attention map (following figure). For previous example, the region attend to "squirrel" will attend to 'lion', and the location of the region keep changed. Thats why it can do local replacement edit.
+In order to only change the replaced word region, prompt-to-prompt propsed to use the original attention map to swap with the new attention map (following figure). For previous example, the region attend to "squirrel" will attend to 'lion', and the location of other region keep unchanged. Thats why it can do local replacement edit.
 
 <img src="pictures/word_swap.jpg" alt="drawing" style="width:200px;"/>
 
@@ -42,7 +42,7 @@ There is one smart and easy soluiton was proposed in prompt-to-prompt  (Algorith
 <img src="pictures/replace_edit2.jpg" alt="drawing" style="width:400px;"/>
 
 
-The edit operations can be applied to from 0% layers and 100% layers. I thinks its a good parameter to tune and depends on the difference degree between replace words. The following image is from the original paper:
+The edit operations can be applied to from 0% layers and 100% layers. I think it's a good parameter to tune and depends on the difference degree between replace words. The following image is from the original paper:
 
 
 <img src="pictures/replace_edit3.jpg" alt="drawing" style="width:1200px;"/>
@@ -75,7 +75,7 @@ We can simply re-weighting the cross attention map layer emphasize or un-emphasi
 
 <img src="pictures/attention_reweight.jpg" alt="drawing" style="width:200px;"/>
 
-We can definitely use the local blend. The re-weighting edit results w/o local blend is shown as follows:
+We can definitely use the local blend too. The re-weighting edit results w/o local blend is shown as follows:
 
 
 <img src="pictures/reweight_edit1.jpg" alt="drawing" style="width:1200px;"/>
