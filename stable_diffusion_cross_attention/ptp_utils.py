@@ -198,6 +198,20 @@ def register_attention_control(model, controller):
                 mask = mask[:, None, :].repeat(h, 1, 1)
                 sim.masked_fill_(~mask, max_neg_value)
 
+#             #manually edit cross attention map
+#             if is_cross:
+#                 h = w = int(sim.shape[1]**0.5)
+#                 sim = sim.reshape(sim.shape[0], h, w, sim.shape[-1])
+#                 left, right = int(8 * w / 10),  int(10 * w / 10)
+#                 sim[:, :, left:right, 1] = -5
+#                 sim[:, :, left:right, 2] = 5
+    
+#                 sim[:, :, :left, 1] = 5
+#                 sim[:, :, :left, 2] = -5
+#                 sim[:, :, right:, 1] = 5
+#                 sim[:, :, right:, 2] = -5
+#                 sim = sim.reshape(sim.shape[0], h * w, -1)
+                
             # attention, what we cannot get enough of
             attn = sim.softmax(dim=-1)
             attn = controller(attn, is_cross, place_in_unet)

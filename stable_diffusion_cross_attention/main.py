@@ -287,7 +287,7 @@ def run_and_display(prompts, controller, latent=None, run_baseline=False, genera
 
 
 ## Cross-Attention Visualization
-g_cpu = torch.Generator().manual_seed(888)
+g_cpu = torch.Generator().manual_seed(8888)
 prompts = ["a house near river and rainbow in the background"] #A painting of a squirrel eating a burger
 controller = AttentionStore()
 image, x_t = run_and_display(prompts, controller, latent=None, run_baseline=False, generator=g_cpu)

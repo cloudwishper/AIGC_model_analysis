@@ -14,6 +14,13 @@ Visualization exampels:
 <img src="pictures/attention_vis_example2.jpg" alt="drawing" style="width:800px;"/>
 
 
+
+# manually edit the cross attention map
+We can just brute manully edit the cross attention map to roughly control the location of the object. Please check and uncomment the code in fuction register_attention_control in ptp_utils.py. Example result:
+
+<img src="pictures/manually_edit.jpg" alt="drawing" style="width:800px;"/>
+
+
 # no control for vanilla stable diffusion
 
 We repalce 'squirrel' with 'lion' in the input prompot, there is no local control on the generated images even with same random seed. A small modification of the text prompt often leads to a completely different outcome.
@@ -24,7 +31,7 @@ My own ayalysis: the early steps in the decoding process control the global stru
 
 
 
-# cross attention edit for control
+# cross attention edit for control (prompt-to-prompt)
 
 ### 1. replacement edit
 In order to only change the replaced word region, prompt-to-prompt propsed to use the original attention map to swap with the new attention map (following figure). For previous example, the region attend to "squirrel" will attend to 'lion', and the location of other region keep unchanged. Thats why it can do local replacement edit.
