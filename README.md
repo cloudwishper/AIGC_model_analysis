@@ -7,7 +7,7 @@ In order to better understand different AIGC related models like stable diffusio
  
 1. [stable diffusion cross attention analysis](https://github.com/cloudwishper/AIGC_model_analysis/tree/main/stable_diffusion_cross_attention)
 
-    Prompt-to-prompt ICLR 2023 is a good paper for me to understand the cross-attention in the stable diffusion model. The cross attention map represent the layout of the generated structure, and the remaining operations like attention * value, residual block, conv can help the model generated correct object in the location decided by the attention map.
+    Prompt-to-prompt ICLR 2023 is a good paper for me to understand the cross-attention in the stable diffusion model. The cross attention map represent the layout of the generated structure, and the remaining operations like cross attention map * value (tokens), residual blocks, conv can help the model generated correct object in the location decided by the cross attention map.
 
 # Paper reading
 
