@@ -17,3 +17,4 @@ In order to better understand different AIGC related models like stable diffusio
 | High-Resolution Image Synthesis with Latent Diffusion Models (stable diffusion)  | CVPR 2022  |
 | DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation | CVPR 2023 |
 |Prompt-to-Prompt Image Editing with Cross-Attention Control |ICLR 2023 |
+|Expressive Text-to-Image Generation with Rich Text |ICCV 2023 |
